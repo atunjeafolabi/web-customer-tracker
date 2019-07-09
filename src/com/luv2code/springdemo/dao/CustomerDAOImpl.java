@@ -41,9 +41,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// save the customer ... finally LOL
-		currentSession.save(theCustomer);
+		/*  saveOrUpdate is a hibernate method. If theCustomer object is new and has no id, 
+			a new record is INSERTED in the database but if the object has id, it will UPDATE the 
+			corresponding existing record
+		*/
+		currentSession.saveOrUpdate(theCustomer);
 		
+	}
+
+	@Override
+	public Customer getCustomer(int theId) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Customer theCustomer = currentSession.get(Customer.class, theId);
+		
+		return theCustomer;
 	}
 
 }
