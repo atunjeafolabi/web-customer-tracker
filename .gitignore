@@ -65,4 +65,7 @@ local.properties
 ## ignoring target file
 target/
 
+#Jars Lib
+WebContent/WEB-INF/lib
+
 # End of https://www.gitignore.io/api/eclipse,java-web
